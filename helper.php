@@ -34,3 +34,45 @@ if (!function_exists('formatPrice')) {
         return number_format($price);
     }
 }
+
+## hiển thị lỗi
+if (!function_exists('error')) {
+	function error($field)
+	{
+		if (!empty($_SESSION['errors']) && !empty($_SESSION['errors'][$field])) {
+			return $_SESSION['errors'][$field];
+		}
+	}
+}
+
+## lấy data đã nhập ở input ra
+if (!function_exists('getOldValue')) {
+	function getOldValue($field)
+	{
+		if(!empty($_SESSION['old-data']) && !empty($_SESSION['old-data'][$field])){
+			return $_SESSION['old-data'][$field];
+		}
+	}
+}
+
+##
+if (!function_exists('unsetSession')) {
+	function unsetSession()
+	{
+		unset($_SESSION['errors']);
+		unset($_SESSION['old-data']);
+		unset($_SESSION['toastr']);
+	}
+}
+
+
+if (!function_exists('toastr')) {
+	function toastr($icon = 'success', $message = '', $title = '')
+	{
+		$_SESSION['toastr'] = [
+            'icon' => $icon,
+            'message' => $message,
+            'title' => $title
+        ];
+	}
+}

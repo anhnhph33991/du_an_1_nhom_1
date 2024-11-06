@@ -11,12 +11,16 @@
 
 <body>
     @include('layouts.partials.navbar')
+    @include('layouts.components.toastr')
     <div class="container">
         @yield('content')
     </div>
 
     @include('layouts.partials.script')
+    @include('layouts.components.toastr')
     @yield('script')
+
+    {{ unsetSession() }}
 </body>
 
 </html>
