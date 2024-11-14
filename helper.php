@@ -27,6 +27,13 @@ if (!function_exists('routeAdmin')) {
     }
 }
 
+if (!function_exists('asset')) {
+    function asset($path = null)
+    {
+        return $_ENV['ASSETS'] . $path;
+    }
+}
+
 
 if (!function_exists('formatPrice')) {
     function formatPrice($price)
